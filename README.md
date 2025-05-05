@@ -1,27 +1,38 @@
-# NYPD-Lab7-homework-Candela-Daniel-Suelane-
-Write a small tool to encrypt or decrypt messages from files. Message is in the input file. Read it. Encrypt or decrypt it. Write the result into output file. The parameter determines if encryption/decryptios is done by Ceasar cipher or Morse code.
 
-Division of work:
+# 🔐 Encryption/Decryption Tool
 
-1. Person one
-- responsible for creating git project, and access to all participants
-- txt file with all participants
-- encryption and decryption function
-https://en.wikipedia.org/wiki/Caesar_cipher
+This is a group project to build a simple command-line tool that can **encrypt** or **decrypt** messages from text files using **Caesar cipher** or **Morse code**.
 
-2. Person two
-- responsible for handling the usage with configparser  or argparse.
-- options:
--> -h shows info about usage
--> -e -d choice of options either decryption or encryption
--> input_file, output_file
--> -c Ceasar cipher, -n value of the right shift of the letters in the cipher
--> -m Morse code
-- main file that uses imported procedures
+---
 
-3. Person three
+## 📌 Description
 
-- encryption and decryption function
-https://en.wikipedia.org/wiki/Morse_code
+The program reads a message from an input file, encrypts or decrypts it using the selected method, and writes the result to an output file.
 
-Discuss about imports and function names.
+You can choose between:
+- **Caesar cipher** (with a custom right shift)
+- **Morse code**
+
+---
+
+## 🚀 How to Use
+
+Run the tool from the terminal:
+
+```bash
+python main.py -h
+```
+This will show a help message with usage instructions.
+
+## 📂 Project Structure
+
+```
+project/
+├── caesar_cipher.py     # Caesar cipher logic
+├── morse.py             # Morse code logic
+├── main.py              # Command-line interface and file I/O
+├── participants.txt     # List of participants
+├── input.txt            # Example input file
+├── output.txt           # Output file (result goes here)
+└── README.md            # This documentation
+```

@@ -12,15 +12,13 @@ def write_file(file_path, content):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Encrypt or decrypt messages using Caesar cipher or Morse code.",
-        epilog="""\
-Examples of usage:
-  python main.py -m -e input.txt output.txt         Encrypt with Morse code
-  python main.py -m -d input.txt output.txt         Decrypt Morse code
-  python main.py -c -e -n 3 input.txt output.txt     Encrypt with Caesar cipher (shift 3)
-  python main.py -c -d -n 3 input.txt output.txt     Decrypt Caesar cipher (shift 3)
-""",
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        description="Encrypt or decrypt messages using Caesar cipher or Morse code.\n\n"
+                    "Examples:\n"
+                    "  python main.py -m -e input.txt output.txt   # Encrypt with Morse code\n"
+                    "  python main.py -m -d input.txt output.txt   # Decrypt Morse code\n"
+                    "  python main.py -c -e -n 3 input.txt output.txt   # Encrypt Caesar with shift 3\n"
+                    "  python main.py -c -d -n 3 input.txt output.txt   # Decrypt Caesar with shift 3",
+        formatter_class=argparse.RawTextHelpFormatter
     )
 
     parser.add_argument('-c', action='store_true', help='Use Caesar cipher')
@@ -38,30 +36,33 @@ Examples of usage:
     if args.e:
         if args.c:
             if args.n is None:
-                print("Shift (-n) is required for Caesar cipher.")
+                print("Error: Shift (-n) is required for Caesar cipher.")
                 return
             result = encrypt_caesar(text, args.n)
         elif args.m:
             result = encrypt_morse(text)
+            if result.startswith("Error:"):
+                print(result)
+                return
         else:
-            print("You must specify -c or -m.")
+            print("Error: You must specify either -c (Caesar) or -m (Morse).")
             return
     elif args.d:
         if args.c:
             if args.n is None:
-                print("Shift (-n) is required for Caesar cipher.")
+                print("Error: Shift (-n) is required for Caesar cipher.")
                 return
             result = decrypt_caesar(text, args.n)
         elif args.m:
             result = decrypt_morse(text)
         else:
-            print("You must specify -c or -m.")
+            print("Error: You must specify either -c (Caesar) or -m (Morse).")
             return
     else:
-        print("You must specify -e or -d.")
+        print("Error: You must specify -e (encrypt) or -d (decrypt).")
         return
 
     write_file(args.output_file, result)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     main()
