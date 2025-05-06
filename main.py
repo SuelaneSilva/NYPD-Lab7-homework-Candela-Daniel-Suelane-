@@ -38,7 +38,7 @@ def main():
             if args.n is None:
                 print("Error: Shift (-n) is required for Caesar cipher.")
                 return
-            print(f"Encrypting using Caesar cipher with shift (args.n)...")
+            print(f"Encrypting using Caesar cipher with shift {args.n}...")
             result = encrypt_caesar(text, args.n)
         elif args.m:
             print("Encrypting using Morse code...")
@@ -54,7 +54,7 @@ def main():
             if args.n is None:
                 print("Error: Shift (-n) is required for Caesar cipher.")
                 return
-            print(f"Decrypting using Caesar cipher with shift (args.n)...")
+            print(f"Decrypting using Caesar cipher with shift {args.n}...")
             result = decrypt_caesar(text, args.n)
         elif args.m:
             print(f"Decrypting using Morse code...")
