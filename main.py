@@ -38,8 +38,10 @@ def main():
             if args.n is None:
                 print("Error: Shift (-n) is required for Caesar cipher.")
                 return
+            print(f"Encrypting using Caesar cipher with shift (args.n)...")
             result = encrypt_caesar(text, args.n)
         elif args.m:
+            print("Encrypting using Morse code...")
             result = encrypt_morse(text)
             if result.startswith("Error:"):
                 print(result)
@@ -52,8 +54,10 @@ def main():
             if args.n is None:
                 print("Error: Shift (-n) is required for Caesar cipher.")
                 return
+            print(f"Decrypting using Caesar cipher with shift (args.n)...")
             result = decrypt_caesar(text, args.n)
         elif args.m:
+            print(f"Decrypting using Morse code...")
             result = decrypt_morse(text)
         else:
             print("Error: You must specify either -c (Caesar) or -m (Morse).")
@@ -63,6 +67,7 @@ def main():
         return
 
     write_file(args.output_file, result)
+    print("Responses have been generated succesfully. No errors detected")
 
 if __name__ == '__main__':
     main()
